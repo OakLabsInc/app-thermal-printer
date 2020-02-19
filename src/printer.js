@@ -2,11 +2,23 @@ const ThermalPrinter = require("node-thermal-printer").printer;
 const Types = require("node-thermal-printer").types;
 const { join } = require('path')
 
+const printer = require('printer')
+var util = require('util');
+var printers = printer.getPrinters();
+printers.forEach(function(iPrinter, i){
+  console.log('' + i + 'ppd for printer "' + iPrinter.name + '":' + util.inspect(printer.getPrinterDriverOptions(iPrinter.name), {colors:true, depth:10} ));
+  console.log('\tselected page size:'+ printer.getSelectedPaperSize(iPrinter.name) + '\n');
+});
+console.log("supported job commands:\n"+util.inspect(printer.getSupportedJobCommands(), {colors:true, depth:10}));
+console.log("supported formats are:\n"+util.inspect(printer.getSupportedPrintFormats(), {colors:true, depth:10}));
+var printerName = printer.getDefaultPrinterName() || 'is not defined on your computer'
+console.log('default printer name: ' + (printer.getDefaultPrinterName() || 'is not defined on your computer'));
 
 async function printExamples () {
+  
   let printer = new ThermalPrinter({
     type: Types.EPSON,  // 'STAR' or 'EPSON'
-    interface: process.env.PRINTER_NAME || 'printer:auto', 
+    interface: process.env.PRINTER_NAME || `printer:${printerName}`, 
     options: {
       timeout: parseInt(process.env.TIMEOUT) || 1000
     },
@@ -15,6 +27,8 @@ async function printExamples () {
     removeSpecialCharacters: false,    // Removes special characters - default: false
     lineCharacter: "-",                // Use custom character for drawing lines - default: -
   });
+
+
 
   let isConnected = await printer.isPrinterConnected();
   console.log("Printer connected:", isConnected);

@@ -40,9 +40,9 @@ docker-compose down
       "image": "index.docker.io/oaklabs/app-thermal-printer:latest",
       "environment": {
         "TZ": "America/Los_Angeles",
-        "PRINTER_NAME": "printer:auto",
-        "PAPER_WIDTH": "48",
-        "TIMEOUT": "1000"
+        "PRINTER_NAME": "printer:auto", // optional default is looked up as the system default printer
+        "PAPER_WIDTH": "48", // optional
+        "TIMEOUT": "1000" // optional ... default is 3000
       }
     }
   ]
