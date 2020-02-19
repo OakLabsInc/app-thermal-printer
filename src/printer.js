@@ -6,7 +6,7 @@ const { join } = require('path')
 async function printExamples () {
   let printer = new ThermalPrinter({
     type: Types.EPSON,  // 'STAR' or 'EPSON'
-    interface: process.env.PRINTER_NAME || process.argv[2], 
+    interface: process.env.PRINTER_NAME || 'printer:auto', 
     options: {
       timeout: parseInt(process.env.TIMEOUT) || 1000
     },
@@ -19,8 +19,8 @@ async function printExamples () {
   let isConnected = await printer.isPrinterConnected();
   console.log("Printer connected:", isConnected);
 
-  printer.alignCenter();
-  await printer.printImage(join(__dirname, 'assets/olaii-logo-black-small.png'));
+  // printer.alignCenter();
+  // await printer.printImage(join(__dirname, 'assets/olaii-logo-black-small.png'));
 
   printer.alignLeft();
   printer.newLine();

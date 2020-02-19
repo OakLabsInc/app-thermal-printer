@@ -1,4 +1,6 @@
 
+require('dotenv').config()
+
 const oak = require('oak')
 const { join } = require('path')
 const _ = require('lodash')
