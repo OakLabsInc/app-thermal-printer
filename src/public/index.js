@@ -17,6 +17,9 @@ window.app = window.angular
   })
 
 window.app.controller('appController', function ($log, $timeout, $scope, $http, $window, oak, _) {
+  
+  $scope.ppds = []
+  
   // ripples
   $scope.untapped = true
   $scope.cursor = {
@@ -76,12 +79,20 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
     // angular.element('.icon-light-up').css('color', color );
 
     $timeout(function () {
-      oak.send('print.examples', {
+      oak.send('printer.examples', {
         // send message here
       })
-      console.log("oak.send('print.examples',{})")
+      console.log("oak.send('printer.examples',{})")
     }, 0)
   }
 
   oak.ready()
+
+  $timeout(function () {
+    oak.send('printer.getPrinters', {})
+  }, 0)
+
+  oak.on('printer.connectedPrinters', function(ppds){
+    $scope.ppds = ppds
+  })
 })

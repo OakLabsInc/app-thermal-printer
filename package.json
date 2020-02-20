@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "description": "Thermal Printer app for OakOS v5.0.x",
   "main": "src/server.js",
+  "engines": {
+    "node": ">=10.15.x"
+  },
   "scripts": {
     "start": "node_modules/.bin/oak .",
     "dev": "npm start",
-    "rebuild": "rm -rf node_modules/ package-lock.json && npm i && node_modules/.bin/oak-rebuild $(pwd)",
+    "rebuild": "rm -rf node_modules/ package-lock.json && npm i && node_modules/.bin/oak-rebuild $(pwd) && $(npm bin)/electron-rebuild",
     "test": "exit 0;"
   },
   "repository": {
@@ -20,8 +23,8 @@
   },
   "homepage": "https://github.com/OakLabsInc/app-thermal-printer#readme",
   "devDependencies": {
-    "electron-rebuild": "^1.10.0",
-    "oak": "~5.0.9"
+    "oak": "~5.0.9",
+    "electron-rebuild": "~1.10.0"
   },
   "dependencies": {
     "angular": "~1.7.2",
@@ -29,11 +32,13 @@
     "angular-aria": "~1.7.5",
     "angular-material": "~1.1.10",
     "angular-messages": "~1.7.5",
+    "concat-stream": "~2.0.0",
     "dotenv": "~8.2.0",
-    "express": "~4.17.1",
+    "express": "~4.16.4",
+    "ipp": "~2.0.1",
     "lodash": "~4.17.15",
-    "node-thermal-printer": "~4.1.2",
-    "printer": "^0.4.0",
+    "pdfkit": "~0.11.0",
+    "printer": "~0.4.0",
     "pug": "~2.0.3",
     "stylus": "~0.54.5",
     "uuid": "~3.4.0"

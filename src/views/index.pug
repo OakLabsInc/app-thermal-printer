@@ -15,10 +15,14 @@ html(ng-app='lightsApp')
       .icon
         div.icon-printer
       md-divider
-      div.form-container(layout="row" layout-align="center center")
+      div.form-container(layout="column" layout-align="center center")
         md-input-container(class='md-block')
             md-button.md-primary.md-raised(ng-click="printExamples()") Print Examples
-
+        md-input-container(class='md-block')
+          label Printer Name
+          md-select(ng-model="printerPpd")
+            md-option( ng-repeat="printer in ppds track by printer.name" ng-value="printer") {{ printer.name }}
+      pre(style="text-align: left") {{ printerPpd | json }}
 
 
     script(src="/vendor/lodash.js")

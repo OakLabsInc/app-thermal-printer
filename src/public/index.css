@@ -29,7 +29,7 @@ html {
 }
 body {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   background-color: #fff;
   color: #424242;

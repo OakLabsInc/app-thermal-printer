@@ -14,6 +14,7 @@ const app = express()
 
 const port = process.env.PORT ? _.toNumber(process.env.PORT) : 9000
 const printer = require(join(__dirname, 'printer'))
+const printerName = process.env.PRINTER_NAME || "http://localhost:631/printers/TM-T88V"
 
 let publicPath = join(__dirname, 'public')
 let viewsPath = join(__dirname, 'views')
@@ -58,8 +59,11 @@ function loadWindow () {
         path: 'uuid'
       }
     ]
-  }).on('print.examples', function () {
-    printer.printExamples()
+  }).on('printer.examples', function (data) {
+    printer.printExamples(printerName)
+  }).on('printer.getPrinters', function () {
+     var ppds = printer.getPrinters()
+     window.send('printer.connectedPrinters', ppds)
   })
 
 }
