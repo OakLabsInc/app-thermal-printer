@@ -46,7 +46,7 @@ function loadWindow () {
     ontop: false,
     insecure: true,
     flags: ['enable-vp8-alpha-playback'],
-    size: "1080x1920",
+    fullscreen: true,
     sslExceptions: ['localhost'],
     background: '#ffffff',
     scripts: [
