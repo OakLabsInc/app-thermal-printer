@@ -17,9 +17,9 @@ html(ng-app='lightsApp')
       md-divider
       div.form-container(layout="column" layout-align="center center")
         md-input-container(class='md-block')
-            md-button.md-primary.md-raised(ng-click="printExamples()") Print Examples
-      pre(style="text-align: left") {{ ppd | json }}
-
+            md-button.md-primary.md-raised(ng-click="printExamples()") Print Demo
+      div PRINTER_NAME: {{ env.PRINTER_NAME }}
+      div TZ: {{ env.TZ }}
 
     script(src="/vendor/lodash.js")
     script(src="/vendor/angular.min.js")

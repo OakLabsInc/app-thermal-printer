@@ -75,24 +75,19 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
   }
   
   $scope.printExamples = function (configuration) {
-    // let color = 'rgb(' + configuration.rgb.r + ',' + configuration.rgb.g + ',' + configuration.rgb.b + ')'
-    // angular.element('.icon-light-up').css('color', color );
-
     $timeout(function () {
-      oak.send('printer.examples', {
-        // send message here
-      })
-      console.log("oak.send('printer.examples',{})")
+      oak.send('printer.examples')
     }, 0)
   }
 
   oak.ready()
 
-  $timeout(function () {
-    oak.send('printer.getPrinters', {})
-  }, 0)
+  oak.send('printer.getPrinters', {})
 
   oak.on('printer.connectedPrinters', function(ppd){
-    $scope.ppd = ppd
+    console.log("Printer Attributes: \n", ppd)
+    $timeout(function () {
+      $scope.env = ppd.env
+    }, 0)
   })
 })

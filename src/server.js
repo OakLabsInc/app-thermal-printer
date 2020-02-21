@@ -59,17 +59,19 @@ function loadWindow () {
         path: 'uuid'
       }
     ]
-  }).on('printer.examples', function (data) {
+  })
+
+  .on('printer.examples', function () {
     printer.printExamples(printerName)
-  }).on('printer.getPrinters', function(){
+  })
+  
+  .on('printer.getPrinters', function(){
     printer.getPrinterAttributes(printerName, function (name, ppd) {
-      //console.log(name, JSON.stringify(ppd, null, 2))
       window.send('printer.connectedPrinters', {
-        name: printerName,
-        ppd: ppd
+        ppd: ppd,
+        env: process.env
       })
     })
-
   })
 
 }
