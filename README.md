@@ -41,7 +41,7 @@ docker-compose down
       "image": "index.docker.io/oaklabs/app-thermal-printer:ipp-latest",
       "environment": {
         "TZ": "America/Los_Angeles",
-        "PRINTER_NAME": "http://192.168.1.1:631/printers/TM-T88V"
+        "PRINTER_NAME": "http://192.168.86.250:631/ipp/print"
       }
     }
   ]

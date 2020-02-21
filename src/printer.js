@@ -1,7 +1,6 @@
 const ipp = require('ipp');
 const PDFDocument = require('pdfkit');
 const concat = require("concat-stream");
-const printer = require('printer')
 
 
 async function printExamples (printerName) {
@@ -33,5 +32,17 @@ async function printExamples (printerName) {
   doc.end();
 }
 
+async function getPrinterAttributes(name, cb) {
+  var printer = ipp.Printer(name);
+  printer.execute("Get-Printer-Attributes", null, function(err, res){
+    if (err){
+      cb(name, err)
+    }
+    cb(name, res)
+  });
+}
+
+
+
 module.exports.printExamples = printExamples
-module.exports.getPrinters = printer.getPrinters
+module.exports.getPrinterAttributes = getPrinterAttributes

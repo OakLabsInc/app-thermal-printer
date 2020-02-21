@@ -92,7 +92,7 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
     oak.send('printer.getPrinters', {})
   }, 0)
 
-  oak.on('printer.connectedPrinters', function(ppds){
-    $scope.ppds = ppds
+  oak.on('printer.connectedPrinters', function(ppd){
+    $scope.ppd = ppd
   })
 })
