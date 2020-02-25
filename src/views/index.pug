@@ -15,11 +15,11 @@ html(ng-app='lightsApp')
       .icon
         div.icon-printer
       md-divider
-      div.form-container(layout="row" layout-align="center center")
+      div.form-container(layout="column" layout-align="center center")
         md-input-container(class='md-block')
-            md-button.md-primary.md-raised(ng-click="printExamples()") Print Examples
-
-
+            md-button.md-primary.md-raised(ng-click="printExamples()") Print Demo
+      div PRINTER_NAME: {{ env.PRINTER_NAME }}
+      div TZ: {{ env.TZ }}
 
     script(src="/vendor/lodash.js")
     script(src="/vendor/angular.min.js")

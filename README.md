@@ -1,6 +1,7 @@
 # Thermal Printer Application
 
 Thermal printer application for OakOS v5.0.X
+This is designed to work on EPSON and STAR thermal printers and is tested on Epson TM-T88v
 
 ## Running locally
 
@@ -37,12 +38,10 @@ docker-compose down
 {
   "services": [
     {
-      "image": "index.docker.io/oaklabs/app-thermal-printer:latest",
+      "image": "index.docker.io/oaklabs/app-thermal-printer:ipp-latest",
       "environment": {
         "TZ": "America/Los_Angeles",
-        "PRINTER_NAME": "printer:auto", // optional default is looked up as the system default printer
-        "PAPER_WIDTH": "48", // optional
-        "TIMEOUT": "1000" // optional ... default is 3000
+        "PRINTER_NAME": "http://localhost:631/printers/TM-T88V"
       }
     }
   ]
