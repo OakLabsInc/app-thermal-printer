@@ -38,7 +38,7 @@ docker-compose down
 {
   "services": [
     {
-      "image": "index.docker.io/oaklabs/app-thermal-printer:1.0.0",
+      "image": "index.docker.io/oaklabs/app-thermal-printer:release-1.0.0",
       "environment": {
         "TZ": "America/Los_Angeles",
         "PRINTER_NAME": "http://localhost:631/printers/TM-T88V"
